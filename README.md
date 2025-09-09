@@ -1,1 +1,0 @@
-# kafkatool-on-ec2
