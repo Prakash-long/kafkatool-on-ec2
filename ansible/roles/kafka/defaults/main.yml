@@ -1,0 +1,14 @@
+---
+kafka_version: "3.5.1"
+kafka_install_dir: "/opt/kafka"
+kafka_user: "kafka"
+kafka_group: "kafka"
+log_dir: "/var/lib/kafka/data"
+controller_port: 9093
+broker_port: 9092
+
+
+kafka_nodes:
+  - { id: 1, ip: "52.91.75.156" }
+  - { id: 2, ip: "54.198.163.58" }
+  - { id: 3, ip: "3.82.2.177" }

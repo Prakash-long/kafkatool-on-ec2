@@ -1,0 +1,6 @@
+---
+- name: Deploy Kafka cluster
+  hosts: kafka_nodes
+  become: yes
+  roles:
+    - kafka

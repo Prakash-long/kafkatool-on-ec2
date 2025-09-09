@@ -1,0 +1,14 @@
+process.roles=broker,controller
+node.id={{ kafka_nodes | selectattr("ip","equalto",ansible_host) | map(attribute="id") | first }}
+
+listeners=PLAINTEXT://0.0.0.0:{{ broker_port }},CONTROLLER://0.0.0.0:{{ controller_port }}
+advertised.listeners=PLAINTEXT://{{ ansible_host }}:{{ broker_port }}
+
+controller.listener.names=CONTROLLER
+listener.security.protocol.map=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+inter.broker.listener.name=PLAINTEXT
+
+controller.quorum.voters={% for node in kafka_nodes %}{{ node.id }}@{{ node.ip }}:{{ controller_port }}{% if not loop.last %},{% endif %}{% endfor %}
+
+num.partitions=3
+log.dirs={{ log_dir }}

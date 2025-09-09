@@ -1,0 +1,13 @@
+[Unit]
+Description=Apache Kafka (KRaft mode)
+After=network.target
+
+[Service]
+Type=simple
+User={{ kafka_user }}
+ExecStart={{ kafka_install_dir }}/kafka_2.13-{{ kafka_version }}/bin/kraft-start.sh
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

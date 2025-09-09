@@ -1,0 +1,11 @@
+#!/bin/bash
+KAFKA_HOME={{ kafka_install_dir }}/kafka_2.13-{{ kafka_version }}
+
+if [ ! -f "{{ log_dir }}/meta.properties" ]; then
+  $KAFKA_HOME/bin/kafka-storage.sh format \
+    --config $KAFKA_HOME/config/server.properties \
+    --cluster-id $(KAFKA_HOME/bin/kafka-storage.sh random-uuid) \
+    --ignore-formatted
+fi
+
+exec $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties
