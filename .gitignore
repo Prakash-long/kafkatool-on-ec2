@@ -13,3 +13,6 @@
 *.tfstate
 *.tfstate.backup
 *.pem
+.terraform/
+*.tfstate
+*.tfstate.backup
