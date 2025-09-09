@@ -9,3 +9,7 @@
 # Sensitive files
 *.pem
 
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.pem
